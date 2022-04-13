@@ -1,0 +1,69 @@
+body {
+    font-family: Segoe UI, Poppins;
+    background-color: gray;
+    text-align: center;
+
+    #board {
+        border-collapse: collapse;
+        margin: 0 auto;
+
+        td {
+            height: 1em;
+            width: 1em;
+            background-color: black;
+        }
+
+        .wall {
+            border: 3px solid #1919a6;
+        }
+
+        .food, .power-up, .ghost, .scared-ghost, #pacman {
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .food {
+            background-image: url('food.png');
+            background-size: 0.45em;
+        }
+
+        .power-up {
+            background-image: url('food.png');
+            background-size: 0.9em;
+        }
+
+        [data-ghost='redghost'] {
+            background-image: url('red.jpg');
+            background-size: 0.9em;
+        }
+
+        [data-ghost='pinkghost'] {
+            background-image: url('pink.jpg');
+            background-size: 0.9em;
+        }
+
+        [data-ghost='blueghost'] {
+            background-image: url('blue.jpg');
+            background-size: 0.9em;
+        }
+
+        [data-ghost='orangeghost'] {
+            background-image: url('orange.jpg');
+            background-size: 0.9em;
+        }
+
+        .scared-ghost {
+            background-image: url('scared.png');
+            background-size: 0.9em;
+        }
+
+        #pacman {
+            background-image: url('pacman.png');
+            background-size: 0.75em;
+        }
+    }
+
+    #score-wrapper {
+        font-size: 2em !important;
+    }
+}
