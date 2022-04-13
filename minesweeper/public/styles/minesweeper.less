@@ -1,0 +1,71 @@
+#timer {
+    text-align: center;
+}
+
+table {
+    border-collapse: collapse;
+    margin: auto;
+    tr {
+        td {
+            border: 1px solid black;
+            width: 2em;
+            height: 2em;
+            background-color: #3B4252;
+            box-shadow: inset 0 0 3px #000000;
+            span {
+                display: block;
+                text-align: center;
+                margin: 0 auto;
+                color: #A3BE8C;
+            }
+        }
+    }
+}
+
+#game-msg, #btn-wrapper {
+    text-align: center;
+}
+
+#btn-wrapper button {
+    display: none;
+    margin: 0.75em auto;
+    width: 6em;
+}
+
+#home-button {
+    display: block !important;
+    margin: 0.5em auto;
+}
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    background-color: #ECEFF4;
+    color: #434C5E;
+    margin-left: 1em;
+    padding: 1em;
+    width: 10em;
+    font-family: Lato;
+    border: 1px solid #434C5E;
+
+    position: absolute;
+    z-index: 1;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}
+
+.blinker {
+    animation: blinker 1s linear infinite;
+  }
+
+  @keyframes blinker {
+    50% {
+      opacity: 0;
+    }
+  }

@@ -1,0 +1,21 @@
+{
+  "name": "battlehsip",
+  "description": "A live 2 player battleship game",
+  "main": "server.js",
+  "authors": [
+    "rileythomp"
+  ],
+  "license": "MIT",
+  "moduleType": [],
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components"
+  ],
+  "dependencies": {
+    "jquery": "^3.1.1",
+    "howler.js": "howler#^2.0.2"
+  }
+}

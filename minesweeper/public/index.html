@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset='UTF-8'>
+        <meta name='viewport' content='width=device-width,initial-scale=1'>
+        <title>Minesweeper</title>
+        <link rel='shortcut icon' href='bomb.png' type='image/png'>
+        <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
+        <link rel='stylesheet' href='//fonts.googleapis.com/css?family=Poppins|Rubik|Lato|Raleway' type='text/css'>
+        <link rel='stylesheet/less' type='text/css' href='styles/styles.less' />
+        <script src='js/less.min.js' ></script>
+    </head>
+    <body>
+        <h1>Minesweeper</h1>
+        <div id='start-wrapper'>
+            <select id='difficulty-select'>
+                <option value='custom' selected>Custom</option>
+                <option value='easy'>Easy, 9x9, 10 mines</option>
+                <option value='intermediate'>Intermediate, 16x16, 40 mines</option>
+                <option value='expert'>Expert, 16x30, 99 mines</option>
+            </select>
+            <input id='height' type='number' min='1' max='30' placeholder='Height'>
+            <input id='width' type='number' min='1' max='30' placeholder='Width'>
+            <input id='mines' type='number' min='1' max='899' placeholder='Mines'>
+            
+            <button id='start-button'>Start</button>
+            <button id='instructions-button'>Instructions</button>
+        </div>
+        <a id='github-link' target='blank' href='https://github.com/rileythomp/minesweeper'>
+            <i class='fa fa-github'></i>
+        </a>
+    </body>
+    <script src='js/main.js'></script>
+</html>

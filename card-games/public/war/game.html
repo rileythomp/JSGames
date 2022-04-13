@@ -1,0 +1,102 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Card Games</title>
+    <link href="https://fonts.googleapis.com/css?family=Gothic+A1:200" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="../common.css" rel="stylesheet">
+</head>
+    <body>
+        <style>
+            #main-container {
+                grid-template-columns: repeat(4, 1fr);
+                height: 25rem;
+                grid-row-gap: 0;
+            }
+
+            .war-cards {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .card {
+                border: 1px solid black;
+                height: 20rem;
+                width: 15rem;
+                margin: 0 auto;
+                border-radius: 0.5rem;
+            }
+
+            .war-card {
+                border: 1px solid black;
+                border-radius: 0.5rem;
+                width: 3.75rem;
+                height: 4rem;
+                margin: 0 auto;
+                margin-bottom: 1rem;
+                padding-top: 1rem;
+            }
+
+            .noclick {
+                pointer-events: none !important;
+            }
+
+            .show-card {
+                display: none;
+                font-size: 5rem;
+                padding-top: 4rem;
+                height: 16rem;
+            }
+
+            #player-war-cards {
+                grid-column: 1 / 2;
+            }
+
+            #computer-war-cards {
+                grid-column: 4 / 5
+            }
+        </style>
+        <button id="home">home</button>
+        <h1>War</h1>
+        <div id="main-container" class="grid-container">
+            <div display="inline">
+                <div class="card" id="player">
+
+                </div>
+                <p id="player-count">26</p>
+            </div>
+            <div display="inline">
+                <div id="player-show" class="card show-card noclick">
+
+                </div>
+            </div>
+            <div display="inline">
+                <div id="computer-show" class="card show-card noclick">
+
+                </div>
+            </div>
+            <div display="inline">
+                <div id="computer" class="card noclick">
+
+                </div>
+                <p id="computer-count">26</p>
+            </div>
+            <div id="player-war-cards" class="war-cards">
+
+            </div>
+            <div id="computer-war-cards" class="war-cards">
+                
+            </div>
+        </div>
+        <button id="give-up" onclick="gameOverDisplay()">Give up</button>
+        <p id="won" style="display:none"></p>
+        <button onclick="startGame()" id="play-again" style="display:none">Play again</button>
+        <a id='github-link' target='blank' href='https://github.com/rileythomp/card-games'>
+            <i class='fa fa-github'></i>
+        </a>
+        <script type="text/javascript" src="../common.js"></script>
+        <script type="text/javascript" src="war.js"></script>
+    </body>
+</html>
