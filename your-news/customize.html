@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<link rel="shortcut icon" type="image/x-icon" href="newspaper.png" />
+<title>yourNews</title>
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="customize.css">
+<link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+</head>
+
+<body ng-cloak ng-app="customizeApp" ng-controller="customizeCtrlr">
+
+
+    <h1>youNews Settings</h1>
+    <div id="#customNews">
+        <h4>Default news</h4>
+        <input id="keyword" ng-keyup="checkNewsEnter($event)" ng-model="keyword" placeholder="{{keywordPlaceholder}}" type="text">
+        <input id="country" ng-keyup="checkNewsEnter($event)" ng-model="country" placeholder="{{countryPlaceholder}}" type="text">
+        <span ng-if="showDefaultKeyword" name="keyword">Keyword: {{defaultKeyword}} <i ng-click="removeDefaultNews($event)" class="fa fa-times"></i><br></span>
+        <span ng-if="showDefaultCountry" name="country">Country: {{defaultCountry}} <i ng-click="removeDefaultNews($event)" class="fa fa-times"></i></span>
+        <h4>Default stocks</h4>
+        <input id="symbol" ng-model="symbol" ng-keyup="checkStockEnter($event)" placeholder="{{symbolPlaceholder}}" type="text">
+        <ul>
+            <li ng-repeat="stock in stocks" id={{stock}}>{{stock.toUpperCase()}}<i ng-if="stock != ''" ng-click="removeDefaultStock($event)" class="fa fa-times"></i></li>
+        </ul>
+        <button onclick="location.href = 'index.html'">Back to yourNews</button>
+    </div>
+
+
+</body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<script src="stockSymbols.js"></script>
+<script language="javascript" type="text/javascript"  src="customize.js"></script>
+
+</html>

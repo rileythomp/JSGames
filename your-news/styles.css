@@ -1,0 +1,230 @@
+body {
+    font-family: Montserrat;
+    user-select: none;
+    background-color: #dddddd;
+}
+
+a {
+    text-decoration: none;
+}
+
+h3 {
+    font-size: 1.4em
+}
+
+#fact {
+    margin-top: 1em;
+}
+
+#weather {
+    background-color: rgba(238, 238, 238, 0.4) !important;
+    background-blend-mode: color;
+    background-size: cover;
+    padding: 1em 0;
+    font-weight: bold;
+    padding-left: 0.5em;
+}
+
+.Clouds, .Clear, .Mist, .Fog {
+    background-image: url(cloudy.jpg);
+}
+
+.Rain, .Drizzle, .Thunderstorm {
+    background-image: url(rain.gif);
+}
+
+.Snow {
+    background-image: url(snow.gif);
+}
+
+.paperSection {
+    float: left;
+    margin-bottom: 1em;
+}
+
+#info, #newsInfo {
+    overflow-y: scroll;
+    height: 68vh;
+    width: 100%;
+}
+
+h3 {
+    margin: 0;
+}
+
+#newsSection {
+    width: 50%;
+    border-right: solid 1px black;
+    height: 70vh;
+    text-align: center;
+}
+
+img {
+    display: block;
+    margin: auto;
+    border-radius: 0.3em;
+}
+
+#financeSection {
+    width: 45%;
+    padding-left: 2em;
+}
+
+.stockName {
+    font-weight: 900;
+}
+
+.stockPrice, .stockName {
+    font-size: 1.5em;
+}
+
+.info {
+    padding: 1em 0;
+    border-bottom: 1px dotted black;
+}
+
+.info:first-child {
+    padding-top: 0;
+}
+
+.article {
+    width: 90%;
+    margin: auto;
+    text-align: left;
+}
+
+@font-face {
+    font-family: "FontAwesome";
+    font-weight: normal;
+    font-style : normal;
+    src : url("https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/fonts/fontawesome-webfont.eot?v=4.3.0");
+    src : url("https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/fonts/fontawesome-webfont.eot?#iefix&v=4.3.0") format("embedded-opentype"),
+          url("https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/fonts/fontawesome-webfont.woff2?v=4.3.0") format("woff2"),
+          url("https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/fonts/fontawesome-webfont.woff?v=4.3.0") format("woff"),
+          url("https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/fonts/fontawesome-webfont.ttf?v=4.3.0") format("truetype"),
+          url("https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/fonts/fontawesome-webfont.svg?v=4.3.0#fontawesomeregular") format("svg");
+}
+
+.down {
+    color: red;
+    opacity: 1;
+}
+
+.invalid::placeholder {
+    color: red;
+}
+
+.down:before {
+    font-family: FontAwesome;
+    content: "\f0d7 "
+}
+
+.up {
+    color: green;
+}
+
+.up:before {
+    font-family: FontAwesome;
+    content: "\f0d8"
+}
+
+#stockDataTable td:nth-child(2)  {
+    padding-left: 2em;
+}
+
+.stockData {
+    margin-bottom: 1em;
+}
+
+#container {
+    float: left;
+    margin-left: 40vw;
+    padding: 1em 0
+}
+
+#ticker {
+    white-space: nowrap;
+    overflow: hidden;
+    top: 0;
+    width: 100%
+}
+
+#ticker, input, select, #newsMessage {
+    position: relative;
+    margin-bottom: 0.5em;
+}
+
+#newsMessage {
+    font-size: 0.8em;
+}
+
+input, select {
+    width: calc(100% - 0.5em);
+    border-radius: 0.3em;
+    border: none;
+    height: 1.5em;
+    font-family: Montserrat;
+    padding: 0.5em 0 0.5em 0.5em;
+}
+
+.stockChange {
+    margin-left: 0.5em;
+}
+
+#innerTicker {
+    display: inline-block;
+    padding-left: 100%;
+    animation: tickerScroller 45s linear infinite;
+}
+
+.tickerElement {
+    margin: 0 1.5em;
+}
+
+@keyframes tickerScroller {
+    0% {
+      transform: translate(0, 0);
+    }
+    100% {
+      transform: translate(-100%, 0);
+    }
+}
+
+chart {
+    height: 15em ;
+    width: 40%;
+    display: none;
+    margin-bottom: 1em;
+}
+
+.stockChart > button {
+    display: inline-block;
+    width: 15%;
+    text-align: center;
+    margin-bottom: 1em;
+    font-family: Montserrat;
+    border-radius: 0.3em;
+    background-color: white;
+    border: 1px solid darkgrey;
+    padding: 0.1em 0em;
+}
+
+.stockChart > button:hover, .gear:hover {
+    border-color: black !important;
+}
+
+#noArticles, #sourceNote {
+    display: none;
+    margin: 0;
+}
+
+#nameInput {
+    height: 4em;
+}
+
+button {
+    height: 2.5em;
+    border-radius: 0.3em;
+    border-color: 1px solid darkgray;
+    font-family: Montserrat;
+}

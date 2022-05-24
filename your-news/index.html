@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<link rel="shortcut icon" type="image/x-icon" href="newspaper.png" />
+<title>yourNews</title>
+<link rel="stylesheet" href="styles.css">
+<link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+</head>
+
+<body ng-cloak ng-app="newsApp">
+
+    <div id="header" class="mainSection" ng-controller="headerCtrlr">
+        <div id="greeting"><h1>Hi {{name}}</h1></div>
+        <div class="header" id="factAndWeather">
+            <div class="{{condition}}" id="weather">
+                <div class="fAndW">
+                    {{city}}'s weather: <br>
+                    {{description}}&emsp;
+                    Current Temperature: {{temp}}&#8451;&emsp;
+                    High: {{high}}&#8451;&emsp;
+                    Low: {{low}}&#8451;&emsp;
+                    Wind: {{wind}} km/h&emsp;
+                    Humidity: {{humidity}}%&emsp;
+                    Sunrise: {{sunrise}}&emsp;
+                    Sunset: {{sunset}}
+                </div>
+            </div>
+            <div class="fAndW" id="fact">{{fact}}</div>
+        </div>
+    </div>
+
+    <div ng-controller="newsCtrlr" class="mainSection" id="paper">
+        <p id="headlinesMessage">Here are the top headlines in {{country}} today</p>
+        <div class="paperSection" id="newsSection">
+            <div id="newsSearch">
+                <select ng-change="searchNews($event)" ng-model="category" style="height: 2.3em; width: 16%; margin: auto; margin-bottom: 0.5em;">
+                    <option></option>
+                    <option>Business</option>
+                    <option>Entertainment</option>
+                    <option>General</option>
+                    <option>Health</option>
+                    <option>Science</option>
+                    <option>Sports</option>
+                    <option>Technology</option>
+                </select>
+                <input id="keyword" ng-keyup="searchNews($event)" ng-model="keyword" placeholder="Search by keyword" style="width: 22%; margin: auto; margin-bottom: 0.5em;" type="text">
+                <input id="region" ng-keyup="searchNews($event)" ng-model="region" placeholder="Search by country" style="width: 22%; margin: auto; margin-bottom: 0.5em;" type="text">
+                <input id="source" ng-keyup="searchNews($event)" ng-model="source" placeholder="Search by publisher" style="width: 22%; margin: auto; margin-bottom: 0.5em;" type="text">
+                <button class="gear" ng-click="goToEdit()"><i class="fa fa-cog" aria-hidden="true"></i></button>
+            </div>
+            <div id="newsMessage">
+                <p id="noArticles">Sorry, we couldn't find any articles matching your search.</p>
+                <p id="sourceNote">Note: Searching by source can't be used with searching by category or country.</p>
+            </div>
+            <div id="newsInfo">
+                <div class="info article" ng-repeat="article in searchedArticles">
+                    <h3>{{article.title}}</h3>
+                    {{article.source.name}}<br>
+                    {{article.publishedAt}}<br>
+                    <div ng-if="article.urlToImage"><br>
+                        <img draggable="false" width="100%" ng-src="{{article.urlToImage}}">
+                        <br>
+                    </div>
+                    <span ng-if="article.description">{{article.description}}<br></span>
+                    <a target="blank" ng-href="{{article.url}}">Read more about this story</a>
+                </div>
+                <div class="info article" ng-repeat="article in articles">
+                    <h3>{{article.title}}</h3>
+                        {{article.source.name}}<br>
+                        {{article.publishedAt}}<br>
+                    <div ng-if="article.urlToImage"><br>
+                        <img draggable="false" width="100%" ng-src="{{article.urlToImage}}">
+                        <br>
+                    </div>
+                    <span ng-if="article.description">{{article.description}}<br></span>
+                    <a target="blank" ng-href="{{article.url}}">Read more about this story</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="paperSection" id="financeSection">
+            <div id="ticker">
+                <div id="innerTicker">
+                    <span class="tickerElement" ng-repeat="(symbol, data) in stocks">{{data.quote.symbol}}&ensp;${{formatNumber(data.quote.latestPrice)}}&ensp;
+                        <span ng-class="{true: 'up', false: 'down'}[data.quote.change >= 0]">${{formatNumber(Math.abs(data.quote.change))}}</span> 
+                    </span>
+                </div>
+            </div>
+            <input style="width: 94%" type="text" placeholder="{{stockPlaceholder}}" ng-class="{invalid: stockPlaceholder[0] == 'N'}" ng-model="symbolEntered" ng-keyup="searchSymbol($event)">
+            <button class="gear" ng-click="goToEdit()"><i class="fa fa-cog" aria-hidden="true"></i></button>
+            <div id="info">
+            <div class="info" id="searchedStock" ng-if="show">
+                <div class="stockData">
+                    <span class="stockName">{{searched.quote.companyName}}<span ng-if="searched.quote.symbol == 'QQQ'"> (NASDAQ)</span> ({{searched.quote.symbol}})</span><br>
+                    Exchange: <span ng-if="searched.quote.primaryExchange != 'NEW'">{{searched.quote.primaryExchange}}</span>
+                       <span ng-if="searched.quote.primaryExchange == 'NEW'">NYSE</span>
+                </div>
+                
+                <div class="stockData">
+                    <span class="stockPrice">${{formatNumber(searched.quote.latestPrice)}}</span>
+                    <span class="stockChange" ng-class="{true: 'up', false: 'down'}[searched.quote.change >= 0]">${{formatNumber(Math.abs(searched.quote.change))}}</span> 
+                    <span class="stockChange" ng-class="{true: 'up', false: 'down'}[searched.quote.changePercent >= 0]">{{formatNumber((Math.abs(100 * searched.quote.changePercent)))}}% <br></span>
+                </div>
+
+                <div class="stockChart" ng-if="searched.chartData">
+                    <chart id="{{searched.quote.symbol}}" ng-model="searched.chartData">
+                    </chart>  
+                    <button class="{{searched.quote.symbol}} searchedInterval" ng-click="updateStockChart($event)">1m</button>
+                    <button class="{{searched.quote.symbol}} searchedInterval" ng-click="updateStockChart($event)">3m</button>
+                    <button class="{{searched.quote.symbol}} searchedInterval" ng-click="updateStockChart($event)">6m</button>
+                    <button class="{{searched.quote.symbol}} searchedInterval" ng-click="updateStockChart($event)">1y</button>
+                    <button class="{{searched.quote.symbol}} searchedInterval" ng-click="updateStockChart($event)">2y</button>
+                    <button class="{{searched.quote.symbol}} searchedInterval"ng-click="updateStockChart($event)">5y</button>
+                </div>
+            
+                <table class="stockData" id="stockDataTable">
+                    <tbody>
+                        <tr>
+                            <td>Prev. close: ${{formatNumber(searched.quote.previousClose)}}</td>
+                            <td>Open: ${{formatNumber(searched.quote.open)}}</td>
+                        </tr>
+                        <tr>
+                            <td>High: ${{formatNumber(searched.quote.high)}}</td>
+                            <td>Low: ${{formatNumber(searched.quote.low)}}</td>
+                        </tr>
+                        <tr>
+                            <td>52 wk. high: ${{formatNumber(searched.quote.week52High)}}</td>
+                            <td>52 wk. low: ${{formatNumber(searched.quote.week52Low)}}</td>
+                        </tr>
+                        <tr>
+                            <td>Mkt. cap: ${{formatNumber(searched.quote.marketCap)}}</td>
+                            <td><span ng-if="searched.quote.peRatio">PE ratio: {{searched.quote.peRatio}}<br></span></td>
+                        </tr>
+                        <tr ng-if="searched.quote.sector">
+                            <td>Sector: {{searched.quote.sector}}</td>
+                        </tr>
+                    </tbody>
+                </table> 
+            
+                <a target="blank" href="{{searched.news[0].url}}">{{searched.news[0].headline}}</a>
+            </div>
+            <div class="info" ng-repeat="(symbol, data) in stocks">
+                <div class="stockData">
+                    <span class="stockName">{{data.quote.companyName}}<span ng-if="symbol == 'QQQ'"> (NASDAQ)</span> ({{data.quote.symbol}})</span><br>
+                     Exchange: <span ng-if="data.quote.primaryExchange != 'NEW'">{{data.quote.primaryExchange}}</span>
+                               <span ng-if="data.quote.primaryExchange == 'NEW'">NYSE</span>
+                </div>
+                            
+                <div class="stockData">
+                    <span class="stockPrice">${{formatNumber(data.quote.latestPrice)}}</span>
+                    <span class="stockChange" ng-class="{true: 'up', false: 'down'}[data.quote.change >= 0]">${{formatNumber(Math.abs(data.quote.change))}}</span> 
+                    <span class="stockChange" ng-class="{true: 'up', false: 'down'}[data.quote.changePercent >= 0]">{{formatNumber((Math.abs(100 * data.quote.changePercent)))}}% <br></span>
+                </div>
+                <div class="stockChart">
+                    <chart id="{{data.quote.symbol}}" ng-model="data.chartData">
+                    </chart>  
+                    <button class="{{data.quote.symbol}}" ng-click="updateStockChart($event)">1m</button>
+                    <button class="{{data.quote.symbol}}" ng-click="updateStockChart($event)">3m</button>
+                    <button class="{{data.quote.symbol}}" ng-click="updateStockChart($event)">6m</button>
+                    <button class="{{data.quote.symbol}}" ng-click="updateStockChart($event)">1y</button>
+                    <button class="{{data.quote.symbol}}" ng-click="updateStockChart($event)">2y</button>
+                    <button class="{{data.quote.symbol}}" ng-click="updateStockChart($event)">5y</button>
+                </div>
+                <table class="stockData" id="stockDataTable">
+                    <tbody>
+                        <tr>
+                            <td>Prev. close: ${{formatNumber(data.quote.previousClose)}}</td>
+                            <td>Open: ${{formatNumber(data.quote.open)}}</td>
+                        </tr>
+                        <tr>
+                            <td>High: ${{formatNumber(data.quote.high)}}</td>
+                            <td>Low: ${{formatNumber(data.quote.low)}}</td>
+                        </tr>
+                        <tr>
+                            <td>52 wk. high: ${{formatNumber(data.quote.week52High)}}</td>
+                            <td>52 wk. low: ${{formatNumber(data.quote.week52Low)}}</td>
+                        </tr>
+                        <tr>
+                            <td>Mkt. cap: ${{formatNumber(data.quote.marketCap)}}</td>
+                            <td><span ng-if="data.quote.peRatio">PE ratio: {{data.quote.peRatio}}<br></span></td>
+                        </tr>
+                        <tr ng-if="data.quote.sector">
+                            <td>Sector: {{data.quote.sector}}</td>
+                        </tr>
+                    </tbody>
+                </table> 
+                <a target="blank" href="{{data.news[0].url}}">{{data.news[0].headline}}</a>
+            </div>
+            </div>
+        </div>
+    </div>
+
+    <div ng-controller="firstVisitCtrlr" id="firstVisitPage">
+        <h1>Hi there,</h1>
+        <input id="nameInput" type="text" placeholder="What's your name" ng-model="userName" ng-keyup="enterName($event)">
+        <p>Hit enter and you'll be able to customize yourNews page.</p>
+    </div>
+
+</body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<script src="https://rawgit.com/moment/moment/2.2.1/min/moment.min.js"></script>
+<script language="javascript" type="text/javascript" src="jquery.flot.min.js"></script>
+<script language="javascript" type="text/javascript" src="jquery.flot.time.min.js"></script>
+<script src="stockSymbols.js"></script>
+<script language="javascript" type="text/javascript"  src="main.js"></script>
+
+</html>

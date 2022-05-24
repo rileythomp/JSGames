@@ -1,0 +1,35 @@
+body {
+    text-align: center;
+}
+
+input, select {
+    margin: 1em auto;
+    width: 17em; 
+    display: block;
+    text-align: center;
+}
+
+input::placeholder {
+    text-align: center;
+}
+
+h4 {
+    margin: 1em 0;
+}
+
+i {
+    margin-left: 1em;
+}
+
+ul {
+    list-style: none;
+    padding-left: 1.2em;
+}
+
+li {
+    margin-bottom: 1em;
+}
+/*
+#symbol {
+    width: 17em;
+}*/

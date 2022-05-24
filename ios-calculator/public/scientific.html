@@ -1,0 +1,190 @@
+<body>
+    <style>
+        body {
+            font-family: Gothic A1;
+            font-weight: 200;
+            user-select: none;
+            background-color: #EDEDEC;
+        }
+
+        .grid-container {
+            width: 800px;
+            display: grid;
+            grid-template-columns: repeat(8, 1fr);
+            grid-gap: 0;
+            border: 1px solid black;
+            margin: 0 auto;
+        }
+
+        .grid-container > div {
+            text-align: center;
+            padding: 1rem;
+            border: 1px solid black;
+            color: white;
+            font-size: 2.5rem;
+        }
+
+        h1 { 
+            text-align: center;
+        }
+
+        #ans {
+            grid-column: 1 / 9;
+            background-color: #1C1C1C;
+            text-align: right;
+            font-size: 5rem;
+            padding-bottom: 0;
+        }
+
+        #zero {
+            grid-column: 5 / 7;
+        }
+
+        .orange {
+            background-color: #FF9500;
+        }
+
+        .gray {
+            background-color: #505050;
+        }
+
+        .num-or-dec {
+            background-color: #D4D4D2;
+        }
+
+        button {
+            width: 100px;
+            height: 50px;
+            font-size: 1rem;
+            margin: 4rem 47%;
+        }
+    </style>
+    <h1>iOS Scientific Calculator</h1>
+    <div class="grid-container centered">
+        <div id="ans">
+                0
+        </div>
+        <div class="calc-button gray" id="left-bracket">
+            (
+        </div>
+        <div class="calc-button gray" id="right-bracket">
+            )
+        </div>
+        <div class="calc-button gray" id="e">
+            e
+        </div>
+        <div class="calc-button gray" id="pi">
+            π
+        </div>
+        <div class="calc-button gray" id="clear">
+            C
+        </div>
+        <div class="calc-button gray" id="negate">
+            ±
+        </div>
+        <div class="calc-button gray" id="percent">
+            %
+        </div>
+        <div class="calc-button orange" id="divide">
+            ÷
+        </div>
+        <div class="calc-button gray" id="factorial">
+            !
+        </div>
+        <div class="calc-button gray" id="modulo">
+            %
+        </div>
+        <div class="calc-button gray" id="square">
+            x^2
+        </div>
+        <div class="calc-button gray" id="cube">
+            x^3
+        </div>
+        <div class="calc-button num-or-dec" id="seven">
+            7
+        </div>
+        <div class="calc-button num-or-dec" id="eight">
+            8
+        </div>
+        <div class="calc-button num-or-dec" id="nine">
+            9
+        </div>
+        <div class="calc-button orange" id="multiply">
+            ×
+        </div>
+        <div class="calc-button gray" id="recip">
+            1/x
+        </div>
+        <div class="calc-button gray" id="sin">
+            sin
+        </div>
+        <div class="calc-button gray" id="cos">
+            cos
+        </div>
+        <div class="calc-button gray" id="tan">
+            tan
+        </div>
+        <div class="calc-button num-or-dec" id="four">
+            4
+        </div>
+        <div class="calc-button num-or-dec" id="five">
+            5
+        </div>
+        <div class="calc-button num-or-dec" id="six">
+            6   
+        </div>
+        <div class="calc-button orange" id="subtract">
+            -
+        </div>
+        <div class="calc-button gray" id="xy">
+            x^y
+        </div>
+        <div class="calc-button gray" id="10x">
+            10^x
+        </div>
+        <div class="calc-button gray" id="2x">
+            2^x
+        </div>
+        <div class="calc-button gray" id="ex">
+            e^x
+        </div>
+        <div class="calc-button num-or-dec" id="one">
+            1
+        </div>
+        <div class="calc-button num-or-dec" id="two">
+            2   
+        </div>
+        <div class="calc-button num-or-dec" id="three">
+            3
+        </div>
+        <div class="calc-button orange" id="add">
+            +
+        </div>
+        <div class="calc-button gray" id="sqrt">
+            √
+        </div>
+        <div class="calc-button gray" id="ln">
+            ln
+        </div>
+        <div class="calc-button gray" id="log10">
+            log10
+        </div>
+        <div class="calc-button gray" id="log2">
+            log2
+        </div>
+        <div class="calc-button num-or-dec" id="zero">
+            0
+        </div>
+        <div class="calc-button num-or-dec" id="decimal">
+            .
+        </div>
+        <div class="calc-button orange" id="equals"> <!-- id = sci-equals" -->
+            =
+        </div>
+    </div>
+    <div id="normal">
+        <button>Normal</button>
+    </div>
+    <script type="text/javascript" src="main.js"></script>
+    <script type="text/javascript" src="calculations.js"></script>
+</body>
