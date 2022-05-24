@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="shortcut icon" type="image/x-icon" href="../fa-trophy.png" />
+        <title>ThomQuiz</title>
+        <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="../styles.css">
+    </head>
+    <body>
+        <div ng-app="statsApp" ng-controller="statsCtrlr">
+            <h1>Your Stats</h1>
+            <h3>Trivia</h3>
+            <p ng-if="highScore !== null">Highest score: {{highScore.score}} ({{highScore.category}}, {{highScore.difficulty}} difficulty)</p>
+            <p ng-if="highScore === null">Highest score: 0</p>
+            <p ng-if="longestStreak !== null">Longest streak: {{longestStreak.streak}} ({{longestStreak.category}}, {{longestStreak.difficulty}} difficulty)</p>
+            <p ng-if="longestStreak === null">Longest streak: 0</p>
+            <h3>Quiz</h3>
+            <p ng-if="bestPercentage !== null">Highest %:&ensp;{{bestPercentage.percentage}}% ({{bestPercentage.category}}, {{bestPercentage.difficulty}} difficulty)</p>
+            <p ng-if="bestPercentage === null">Highest %:&ensp;0%</p>
+            <p ng-if="mostCorrect !== null">Most Correct: {{mostCorrect.correct}} ({{mostCorrect.category}}, {{mostCorrect.difficulty}} difficulty)</p>
+            <p ng-if="mostCorrect === null">Most Correct: 0</p>
+            <button id="home"><i class="fa fa-home"></i>Home</button>
+        </div>
+        <a id='github-link' target='blank' href='https://github.com/rileythomp/thomquiz'>
+            <i class='fa fa-github'></i>
+        </a>
+    </body>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="stats.js"></script>
+</html>

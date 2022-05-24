@@ -1,0 +1,27 @@
+body {
+    height: 100vh;
+}
+
+div {
+    position: fixed;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+h1 {
+    margin: 0;
+}
+
+p {
+    margin: 0.5em 0;
+}
+
+button {
+    transition: transform 0.2s;
+    margin: 0 1em;
+}
+
+button:hover {
+    transform: scale(1.25)
+}

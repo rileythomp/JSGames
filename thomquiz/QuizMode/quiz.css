@@ -1,0 +1,42 @@
+table {
+    height: 100%;
+}
+
+td {
+    padding: 1em;
+}
+
+td:first-child {
+    text-align: left;
+    width: 67%;
+}
+
+#timerAndScore {
+    width: 100%; 
+    height: 100%; 
+    position: relative;
+}
+
+.timerAndScore {
+    position: absolute;
+}
+
+#timer {
+    top: 1em;
+}
+
+#currentScore {
+    top: 2.5em;
+}
+
+.fa {
+    font-weight: bold;
+}
+
+.fa-check {
+    color: green;
+}
+
+.fa-times {
+    color: red;
+}

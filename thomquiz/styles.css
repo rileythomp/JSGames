@@ -1,0 +1,41 @@
+body {
+    text-align: center;
+    font-family: Montserrat;
+    background: #ADD8E6;
+    user-select: none;
+}
+
+button, select, option, input {
+    font-family: Montserrat;
+}
+
+button {
+    padding: 0.5em;
+    border-radius: 0.5em;
+    border: 1px solid darkgray;
+}
+
+button:hover {
+    border: 1px solid black;
+}
+
+select {
+    border-radius: 0.5em;
+    height: 2em;
+}
+
+.hidden {
+    display: none;
+}
+
+button i {
+    margin-right: 0.4em;
+}
+
+#github-link {
+    position: fixed;
+    bottom: 0.5em;
+    right: 1em;
+    color: inherit;
+    font-size: 2.5em;
+}

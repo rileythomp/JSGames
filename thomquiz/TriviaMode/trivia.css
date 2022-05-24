@@ -1,0 +1,14 @@
+#options {
+    list-style: none;
+}
+
+.option {
+    margin: 0em 2em; 
+    display: inline-block;
+    transition: transform .2s;
+}
+
+.option:hover {
+    color: white;
+    transform: scale(1.25)
+}
